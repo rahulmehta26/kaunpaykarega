@@ -7,17 +7,29 @@ import { Button } from "../ui/button";
 
 const Navbar = () => {
 
+    const scrollToView = (href: string) => {
+
+        const element = document.querySelector(href);
+
+        if (element) {
+            element.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+            })
+        }
+    }
+
     const navigate = useNavigate();
 
     return (
         <nav
-            className=" flex justify-between items-center "
+            className="w-full flex justify-between items-center "
         >
 
             <div>
                 <img
                     src={JebCheck}
-                    className="w-40 cursor-pointer h-fit"
+                    className="w-40 cursor-pointer filter drop-shadow-xs h-fit"
                     alt="JebCheck svg"
                     onClick={() => navigate("/")}
                 />
@@ -25,8 +37,8 @@ const Navbar = () => {
 
             <div className=" flex items-center gap-x-8 " >
 
-                <p className=" text-sm font-medium hover:text-primary transition cursor-pointer " > Features </p>
-                <p className=" text-sm font-medium hover:text-primary transition cursor-pointer " > How it Works </p>
+                <p className=" text-sm font-medium hover:text-primary transition cursor-pointer " onClick={() => scrollToView("#features")} > Features </p>
+                <p className=" text-sm font-medium hover:text-primary transition cursor-pointer " onClick={() => scrollToView("#how_it_works")} > How it Works </p>
 
             </div>
 
@@ -43,7 +55,7 @@ const Navbar = () => {
 
                         <IconLayoutDashboard size={18} />
 
-                        <p>Dashboard</p>
+                        <p className=" text-base font-medium " >Dashboard</p>
                     </button>
 
                     <button
@@ -63,7 +75,7 @@ const Navbar = () => {
 
                     <SignInButton>
 
-                        <Button variant={"ghost"} className=" cursor-pointer rounded-full " >
+                        <Button variant={"ghost"} className=" text-sm font-medium hover:bg-orange-200 cursor-pointer rounded-full " >
                             Sign In
                         </Button>
                     </SignInButton>
@@ -71,7 +83,7 @@ const Navbar = () => {
                     <SignUpButton>
 
                         <Button
-                            className=" bg-primary cursor-pointer hover:bg-orange-50 border-none rounded-full "
+                            className=" text-sm font-medium bg-primary cursor-pointer hover:bg-orange-950 border-none rounded-full shadow-md text-shadow-md"
                         >
                             Get Started
                         </Button>

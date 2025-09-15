@@ -1,13 +1,14 @@
 {
   "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
+  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": ["./src/*"],
+      "convex/_generated/*": ["./convex/_generated/api"]
+    },
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "strict": true
   }
 }
